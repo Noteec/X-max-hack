@@ -471,6 +471,8 @@ class Ui_Test(object):
         self.days.setItemText(4, _translate("Test", "20"))
         self.Start.setText(_translate("Test", "Start"))
         self.Start.clicked.connect(self.start)
+        self.PerOpt.currentTextChanged.connect(self.prcChange)
+        self.QuantOpt.currentTextChanged.connect(self.quaChange)
 
     def start(self):
         a1 = self.C1.currentText()
@@ -489,7 +491,13 @@ class Ui_Test(object):
         ben = self.Benefit.text()
         risk = self.Risk.text()
 
-        
+    def prcChange(self):
+        i = self.PerOpt.currentIndex()
+        self.QuantOpt.setCurrentIndex(i)
+    def quaChange(self):
+        i = self.QuantOpt.currentIndex()
+        self.PerOpt.setCurrentIndex(i)
+
 
 
 if __name__ == "__main__":
