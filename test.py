@@ -492,11 +492,9 @@ class Ui_Test(object):
         risk = self.Risk.text()
 
     def prcChange(self):
-        i = self.PerOpt.currentIndex()
-        self.QuantOpt.setCurrentIndex(i)
+        self.QuantOpt.setCurrentIndex(self.PerOpt.currentIndex())
     def quaChange(self):
-        i = self.QuantOpt.currentIndex()
-        self.PerOpt.setCurrentIndex(i)
+        self.PerOpt.setCurrentIndex(self.QuantOpt.currentIndex())
 
 
 
