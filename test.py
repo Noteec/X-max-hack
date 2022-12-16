@@ -470,6 +470,26 @@ class Ui_Test(object):
         self.days.setItemText(3, _translate("Test", "15"))
         self.days.setItemText(4, _translate("Test", "20"))
         self.Start.setText(_translate("Test", "Start"))
+        self.Start.clicked.connect(self.start)
+
+    def start(self):
+        a1 = self.C1.currentText()
+        a2 = self.C2.currentText()
+        a3 = self.C3.currentText()
+        a4 = self.C4.currentText()
+        a5 = self.C5.currentText()
+        a6 = self.C6.currentText()
+        a7 = self.C7.currentText()
+        a8 = self.C8.currentText()
+        a9 = self.C9.currentText()
+        a10 = self.C10.currentText()
+        prc = self.PerOpt.currentText()
+        qua = self.QuantOpt.currentText()
+        per = self.days.currentText()
+        ben = self.Benefit.text()
+        risk = self.Risk.text()
+
+        
 
 
 if __name__ == "__main__":
