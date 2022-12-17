@@ -58,15 +58,13 @@ class Portfel:
         rez = []
         for port in self.mc.values:
             if round(risk,4) == round(port[0],4) and round(ret,4) == round(port[1],4):
-                for i in range(2, len(self.Tickers) + 2):
+                for i in range(2, len(self.Tickers) + 1):
                     rez.append(round(port[i],4))
                 break
         if len(rez) == 0:
             return 'Портфель не найден'
         else:
-            if sum(rez) != 1:
-                dif = 1 - sum(rez)
-                rez[rez.index(min(rez))] += dif
+            rez.append(1 - sum(rez)) 
             self.SetWeights(rez)
             return rez
         
