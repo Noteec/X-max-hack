@@ -10,7 +10,10 @@ import numpy as np
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtGui import QPainter, QColor, QFont
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QWidget, QApplication, QGraphicsScene,QGraphicsEllipseItem,QGraphicsView
+import sys, random
 
 class Ui_Test(object):
     def setupUi(self, Test):
@@ -192,8 +195,11 @@ class Ui_Test(object):
     def retranslateUi(self, Test):
         _translate = QtCore.QCoreApplication.translate
         Test.setWindowTitle(_translate("Test", "MainWindow"))
-        self.box_accii.setItemText(0, _translate("Test", "1"))
-        self.box_accii.setItemText(1, _translate("Test", "2"))
+        # self.box_accii.setItemText(0, _translate("Test", "1"))
+        # self.box_accii.setItemText(1, _translate("Test", "2"))
+        P = [0,1,2]
+        for i in P:
+            self.box_accii.setItemText(i,str(P[i]))
         self.box_obl.setItemText(0, _translate("Test", "1"))
         self.box_obl.setItemText(1, _translate("Test", "2"))
         self.box_bezrisk.setItemText(0, _translate("Test", "1"))
