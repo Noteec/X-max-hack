@@ -28,7 +28,7 @@ class Portfel:
         """Создаёт портфель с полученными акциями"""
         self.Port = ok.Portfolio(self.Tickers, ccy='RUB')
         
-    def MakeForecastDiagramm(self, year=5, perc = [10, 50, 90]):
+    def MakeForecastDiagramm(self, year=5, perc = [1, 10, 50, 90, 99]):
         """Рисует график предпологаемого дохода данного портфеля, можно изменить на сколько лет делать расчёт и колличество перцентилей"""
         self.Port.plot_forecast(years=year, percentiles=perc)
         plt.show()
@@ -42,7 +42,7 @@ class Portfel:
         self.mc = x.get_monte_carlo(n=ports, kind='mean')
         ax.scatter(self.mc.Risk, self.mc.Return, linewidth=0, color='green')
         df = x.ef_points
-        #ax.plot(df['Risk'], df['CAGR'], color='black', linestyle='dashed', linewidth=3)
+        ax.plot(df['Risk'], df['Mean return'], color='black', linestyle='dashed', linewidth=3)
         ax.set_xlabel('Risk (Standard Deviation)')
         ax.set_ylabel('Return')
         ax.legend()
@@ -59,11 +59,16 @@ class Portfel:
         for port in self.mc.values:
             if round(risk,4) == round(port[0],4) and round(ret,4) == round(port[1],4):
                 for i in range(2, len(self.Tickers) + 2):
-                    rez.append(port[i])
+                    rez.append(round(port[i],4))
                 break
         if len(rez) == 0:
             return 'Портфель не найден'
-        else: return rez
+        else:
+            if sum(rez) != 1:
+                dif = 1 - sum(rez)
+                rez[rez.index(min(rez))] += dif
+            self.SetWeights(rez)
+            return rez
         
                 
         
@@ -80,8 +85,6 @@ port = Portfel()
 port.AddCompanyToPort('GAZPROM')
 port.AddCompanyToPort('ROSNEFT')
 port.AddCompanyToPort('LUKOIL')
+port.AddCompanyToPort('NOVATEK')
 port.CreatePortfel()
-#port.MakeEfficientyFrontDiagramm()
-#x = float(input())
-#y = float(input())
-#print(port.GetWeights(x, y))
+port.MakeEfficientyFrontDiagramm()
