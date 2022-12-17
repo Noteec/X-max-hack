@@ -81,10 +81,10 @@ class Portfel:
 
 
 #examples
-port = Portfel()
-port.AddCompanyToPort('GAZPROM')
-port.AddCompanyToPort('ROSNEFT')
-port.AddCompanyToPort('LUKOIL')
-port.AddCompanyToPort('NOVATEK')
-port.CreatePortfel()
-port.MakeEfficientyFrontDiagramm()
+# port = Portfel()
+# port.AddCompanyToPort('GAZPROM')
+# port.AddCompanyToPort('ROSNEFT')
+# port.AddCompanyToPort('LUKOIL')
+# port.AddCompanyToPort('NOVATEK')
+# port.CreatePortfel()
+# port.MakeEfficientyFrontDiagramm()
